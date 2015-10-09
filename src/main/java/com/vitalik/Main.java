@@ -31,31 +31,20 @@ public class Main {
             }
             System.out.println("------------------");
 
-             File file = new File(WorkingDir + "\\test.xml");
+           //  File file = new File(WorkingDir + "\\test.xml");
 
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
-            //Document doc = db.parse(inputFile);
+            Document doc = db.parse(new File(WorkingDir + "\\test.xml"));
+
             doc.getDocumentElement().normalize();
             System.out.println("Root element " + doc.getDocumentElement().getNodeName());
-            NodeList nodeLst = doc.getElementsByTagName("employee");
-            System.out.println("Information of all employees");
-            for (int s = 0; s < nodeLst.getLength(); s++) {
-                Node fstNode = nodeLst.item(s);
-                if (fstNode.getNodeType() == Node.ELEMENT_NODE) {
 
-                    Element fstElmnt = (Element) fstNode;
-                    NodeList fstNmElmntLst = fstElmnt.getElementsByTagName("firstname");
-                    Element fstNmElmnt = (Element) fstNmElmntLst.item(0);
-                    NodeList fstNm = fstNmElmnt.getChildNodes();
-                    System.out.println("First Name : " + ( fstNm.item(0)).getNodeValue());
-                    NodeList lstNmElmntLst = fstElmnt.getElementsByTagName("lastname");
-                    Element lstNmElmnt = (Element) lstNmElmntLst.item(0);
-                    NodeList lstNm = lstNmElmnt.getChildNodes();
-                    System.out.println("Last Name : " + ( lstNm.item(0)).getNodeValue());
-                }
-            }
+            Utils utils = new Utils();
+
+            utils.printNode(doc.getChildNodes(), 1);
+
+
         }
         catch (Exception ex) {
             System.out.println("Exception: " + ex.toString());
@@ -72,4 +61,9 @@ public class Main {
         System.out.println("Name - " + name);
 
     }
+
+
 }
+
+
+
