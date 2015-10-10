@@ -10,6 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        Utils utils = new Utils();
+
         System.out.println("Test console application");
         System.out.println("Args count - " + args.length);
 
@@ -21,7 +23,7 @@ public class Main {
         System.out.println("Current dir: " + WorkingDir);
 
         try {
-            InputStream inputFile = new FileInputStream(WorkingDir + "\\test.xml");
+      /*      InputStream inputFile = new FileInputStream(WorkingDir + "\\test.xml");
 
             int size = inputFile.available();
             System.out.println("Total Available Bytes: " + size);
@@ -40,15 +42,19 @@ public class Main {
             doc.getDocumentElement().normalize();
             System.out.println("Root element " + doc.getDocumentElement().getNodeName());
 
-            Utils utils = new Utils();
+
 
             utils.printNode(doc.getChildNodes(), 1);
+*/
 
+
+            utils.getWeather("http://www.cbr.ru/scripts/XML_daily.asp?");
 
         }
         catch (Exception ex) {
             System.out.println("Exception: " + ex.toString());
         }
+
 
 
         String name;  // переменная для имени
